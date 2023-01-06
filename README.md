@@ -1,8 +1,7 @@
-# QAHOI
+# FGAHOI
 
-QAHOI: Query-Based Anchors for Human-Object Interaction Detection ([paper](https://arxiv.org/abs/2112.08647))
+FGAHOI: Fine-Grained Anchors for Human-Object Interaction Detection
 
-<img src="img/overall_arch.jpg"  width="800"/>
 
 ## Requirements
 
@@ -118,7 +117,7 @@ python main.py --resume params/QAHOI_swin_large_384_22k_mul3.pth --backbone swin
 
 Download the pre-trained swin-tiny model from [Swin-Transformer](https://github.com/microsoft/Swin-Transformer) to `params` folder.
 
-Training QAHOI with Swin-Tiny from scratch.
+Training FGAHOI with Swin-Tiny from scratch.
 
 ```bash
 python -m torch.distributed.launch \
