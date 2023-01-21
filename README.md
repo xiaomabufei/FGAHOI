@@ -103,7 +103,7 @@ We currently provide results on HICO-DET.
 | Model | Full (def) | Rare (def) | None-Rare (def) | Full (ko) | Rare (ko) | None-Rare (ko) | Download |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | Swin-Tiny | 29.94 | 22.24 | 32.24 | 32.48 | 24.16 | 34.97 | [model] |
-| Swin-Large*+ | 36.98 | 31.02 | 38.76 | 38.82 | 32.52 | 40.70 | [model] |
+| Swin-Large*+ | 37.18 | 30.71 | 39.11 | 38.93 | 31.93 | 41.02 | [model] |
 
 ## Training
 
