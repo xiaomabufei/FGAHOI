@@ -101,7 +101,7 @@ We currently provide results on HICO-DET.
 | Swin-Tiny | 29.94 | 22.24 | 32.24 | 32.48 | 24.16 | 34.97 |
 | Swin-Large*+ | 37.18 | 30.71 | 39.11 | 38.93 | 31.93 | 41.02 |
 
-## Training
+<!---## Training
 ### HICO-DET
 - Training FGAHOI with Swin-Tiny from scratch.
 
@@ -181,7 +181,7 @@ python vsrl_eval.py --vcoco_path data/v-coco --detections vcoco.pickle
 ### HOI-SDC
 
 - more details will come soon
-*/
+-->
 ## License
 This repository is released under the Apache 2.0 license as found in the [LICENSE](LICENSE) file.
 ## Citation
