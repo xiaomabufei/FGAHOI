@@ -5,13 +5,12 @@ FGAHOI: Fine-Grained Anchors for Human-Object Interaction Detection
 ## Abstract
 
 Human-Object Interaction (HOI), as an important problem in computer vision, requires locating the human-object pair and identifying the interactive relationships between them. The HOI instance has a greater span in spatial, scale, and task than the individual object instance, making its detection more susceptible to noisy backgrounds. To alleviate the disturbance of noisy backgrounds on HOI detection, it is necessary to consider the input image information to generate fine-grained anchors which are then leveraged to guide the detection of HOI instances. However, it has the following challenges. 𝑖) how to extract pivotal features from the images with complex background information is still an open question. 𝑖𝑖) how to semantically align the extracted features and query embeddings is also a difficult issue. In this paper, a novel end-to-end transformer-based framework (FGAHOI) is proposed to alleviate the above problems. FGAHOI comprises three dedicated components namely, multi-scale sampling (MSS), hierarchical spatial-aware merging (HSAM) and task-aware merging mechanism (TAM). MSS extracts features of humans, objects and interaction areas from noisy backgrounds for HOI instances of various scales. HSAM and TAM semantically align and merge the extracted features and query embeddings in the hierarchical spatial and task perspectives in turn. In the meanwhile, a novel training strategy Stage-wise Training Strategy is designed to reduce the training pressure caused by overly complex tasks done by FGAHOI. In addition, we propose two ways to measure the difficulty of HOI detection and a novel dataset, 𝑖.𝑒., HOI-SDC for the two challenges (Uneven Distributed Area in Human-Object Pairs and Long Distance Visual Modeling of Human-Object Pairs) of HOI instances detection. Experiments are conducted on three benchmarks: HICO-DET, HOI-SDC and V-COCO. Our model outperforms the state-of-the-art HOI detection methods, and the extensive ablations reveal the merits of our proposed contribution.
-![image](https://github.com/NEUfan/photo/blob/main/photo/f501884ee234a3d6a3f1f4c8e28dddf.jpg)
+![image](https://github.com/NEUfan/photo/blob/main/photo/727d4f2717cf7ca550470cb8954ebd0.jpg)
+
+![image](https://github.com/NEUfan/photo/blob/main/photo/7c7447c6874b1a1bfe128310265a1f9.jpg)
 
 
-![image](https://github.com/NEUfan/photo/blob/main/photo/c44921215f0a821029fe7d537f4d560.jpg)
-
-
-![image](https://github.com/NEUfan/photo/blob/main/photo/771587e391b2ea86967754b28d4ca29.jpg)
+![image](https://github.com/NEUfan/photo/blob/main/photo/ef02aebc48411c03633d9df29fb9168.jpg)
 
 ## Requirements
 
