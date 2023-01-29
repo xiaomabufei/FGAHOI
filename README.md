@@ -197,7 +197,7 @@ If you use FGAHOI, please consider citing:
 ## Contact
 Should you have any question, please contact {xiaomabufei@gmail.com}
 
-**Acknowledgments:**
+## Acknowledgments
 
 FGAHOI builds on previous works code base such as [QAHOI](https://github.com/cjw2021/QAHOI), [DAB-DETR](https://github.com/xiaomabufei/DAB-DETR). If you found FGAHOI useful please consider citing these works as well.
 
