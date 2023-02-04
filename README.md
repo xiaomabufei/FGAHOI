@@ -107,6 +107,7 @@ We currently provide results on HICO-DET.
 ## Training
 ### HICO-DET
 - Training FGAHOI with Swin-tiny from scratch.
+
 stage base
 ```bash
 python -m torch.distributed.launch \
@@ -126,6 +127,7 @@ python -m torch.distributed.launch \
         --scale [1, 3, 5] \
         --base  
 ```
+
 stage hierarchical_merge
 ```bash
 python -m torch.distributed.launch \
@@ -146,6 +148,7 @@ python -m torch.distributed.launch \
         --hierarchical_merge   
 
 ```
+
 stage hierarchical_merge and task_merge
 ```bash
 python -m torch.distributed.launch \
@@ -177,7 +180,7 @@ python -m torch.distributed.launch \
         --resume "{Weight of the model}"
         --num_verb_classes 117 \
         --num_obj_classes 80 \
-        --output_dir logs/base \
+        --output_dir logs \
         --epochs 150 \
         --lr_drop 120 \
         --num_feature_levels 3 \
