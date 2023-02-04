@@ -106,84 +106,89 @@ We currently provide results on HICO-DET.
 
 ## Training
 ### HICO-DET
-- Training FGAHOI with Swin-Tiny from scratch.
-
+- Training FGAHOI with Swin-tiny from scratch.
+stage base
 ```bash
 python -m torch.distributed.launch \
         --nproc_per_node=8 \
         --use_env main.py \
         --backbone swin_tiny \
         --pretrained params/swin_tiny_patch4_window7_224.pth \
-        --output_dir logs/swin_tiny_mul3 \
+        --dataset_file hico \
+        --num_verb_classes 117 \
+        --num_obj_classes 80 \
+        --output_dir logs/base \
         --epochs 150 \
         --lr_drop 120 \
         --num_feature_levels 3 \
         --num_queries 300 \
-        --use_nms
+        --merge \
+        --scale [1, 3, 5] \
+        --base  
 ```
-
-- Training FGAHOI with Swin-Large*+ from scratch.
-
+stage hierarchical_merge
 ```bash
 python -m torch.distributed.launch \
         --nproc_per_node=8 \
         --use_env main.py \
-        --backbone swin_large_384 \
-        --pretrained params/swin_large_patch4_window12_384_22k.pth \
-        --output_dir logs/swin_large_384_22k_mul3 \
+        --backbone swin_tiny \
+        --pretrain_model_path "{Weights of the last stage}" \
+        --dataset_file hico \
+        --num_verb_classes 117 \
+        --num_obj_classes 80 \
+        --output_dir logs/hierarchical_merge \
+        --epochs 50 \
+        --lr_drop 40 \
+        --num_feature_levels 3 \
+        --num_queries 300 \
+        --merge \
+        --scale [1, 3, 5] \
+        --hierarchical_merge   
+
+```
+stage hierarchical_merge and task_merge
+```bash
+python -m torch.distributed.launch \
+        --nproc_per_node=8 \
+        --use_env main.py \
+        --backbone swin_tiny \
+        --pretrain_model_path "{Weights of the last stage}" \
+        --dataset_file hico \
+        --num_verb_classes 117 \
+        --num_obj_classes 80 \
+        --output_dir logs/hierarchical_merge_and_task_merge \
+        --epochs 50 \
+        --lr_drop 40 \
+        --num_feature_levels 3 \
+        --num_queries 300 \
+        --merge \
+        --scale [1, 3, 5] \
+        --hierarchical_merge \  
+        --task_merge 
+```
+## Testing
+- Evaluate FGAHOI with Swin-tiny from scratch.
+```bash
+python -m torch.distributed.launch \
+        --nproc_per_node=8 \
+        --use_env main.py \
+        --backbone swin_tiny \
+        --dataset_file hico \
+        --resume "{Weight of the model}"
+        --num_verb_classes 117 \
+        --num_obj_classes 80 \
+        --output_dir logs/base \
         --epochs 150 \
         --lr_drop 120 \
         --num_feature_levels 3 \
         --num_queries 300 \
-        --use_nms
-```
-### V-COCO
-```bash
-python -m torch.distributed.launch \
-        --nproc_per_node=8 \
-        --use_env main.py \
-        --backbone [backbone_name] \
-        --output_dir logs/[log_path] \
-        --epochs 150 --lr_drop 120 \
-        --num_feature_levels 3 \
-        --num_queries 300 \
-        --dataset_file vcoco \
-        --hoi_path data/v-coco \
-        --num_obj_classes 81 \
-        --num_verb_classes 29 \
-        --use_nms [--no_obj]
+        --merge \
+        --scale [1, 3, 5] \
+        --hierarchical_merge \  
+        --task_merge \
+        --eval
 ```
 
-- Train ResNet-50
-
-```bash
-python -m torch.distributed.launch --nproc_per_node=8 --use_env main.py --backbone swin_tiny --pretrained params/swin_tiny_patch4_window7_224.pth --output_dir logs/swin_tiny_mul3_vcoco --epochs 150 --lr_drop 120 --num_feature_levels 3 --num_queries 300 --dataset_file vcoco --hoi_path data/v-coco --num_obj_classes 81 --num_verb_classes 29 --use_nms --no_obj
-```
-- Evaluation of V-COCO
-
-Please generate the detection at first.
-
-```bash
-python generate_vcoco_official.py \
-        --resume [checkpoint.pth] \
-        --save_path vcoco.pickle \
-        --hoi_path data/v-coco \
-        --dataset_file vcoco \
-        --backbone [backbone_name] \
-        --num_feature_level 3 \
-        --num_obj_classes 81 \
-        --num_verb_classes 29 \
-        --use_nms [--no_obj]
-```
-
-Then, using the official code to evaluate.
-
-```bash
-python vsrl_eval.py --vcoco_path data/v-coco --detections vcoco.pickle
-```
-### HOI-SDC
-
-- more details will come soon
 ## License
 This repository is released under the Apache 2.0 license as found in the [LICENSE](LICENSE) file.
 ## Citation
