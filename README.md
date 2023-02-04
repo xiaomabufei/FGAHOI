@@ -1,5 +1,7 @@
 # FGAHOI
 
+[![arXiv](https://img.shields.io/badge/arXiv-2301.04019-b31b1b.svg)](https://arxiv.org/abs/2301.04019)
+
 FGAHOI: Fine-Grained Anchors for Human-Object Interaction Detection
 
 ## Abstract
