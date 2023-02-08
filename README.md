@@ -26,7 +26,7 @@ pip install -r requirements.txt
 - Compiling CUDA operators
 
 ```bash
-cd ./models/ops
+cd ./models/dab_deformable_detr/ops
 sh ./make.sh
 # test
 python test.py
