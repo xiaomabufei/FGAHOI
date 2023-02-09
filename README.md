@@ -125,7 +125,8 @@ python -m torch.distributed.launch \
         --num_queries 300 \
         --merge \
         --scale [1, 3, 5] \
-        --base  
+        --base \
+        --hoi_path data/hico_20160224_det
 ```
 
 stage hierarchical_merge
@@ -145,7 +146,8 @@ python -m torch.distributed.launch \
         --num_queries 300 \
         --merge \
         --scale [1, 3, 5] \
-        --hierarchical_merge   
+        --hierarchical_merge \
+        --hoi_path data/hico_20160224_det
 
 ```
 
@@ -167,7 +169,8 @@ python -m torch.distributed.launch \
         --merge \
         --scale [1, 3, 5] \
         --hierarchical_merge \  
-        --task_merge 
+        --task_merge \
+        --hoi_path data/hico_20160224_det
 ```
 ## Testing
 - Evaluate FGAHOI with Swin-tiny from scratch.
@@ -189,7 +192,8 @@ python -m torch.distributed.launch \
         --scale [1, 3, 5] \
         --hierarchical_merge \  
         --task_merge \
-        --eval
+        --eval \
+        --hoi_path data/hico_20160224_det
 ```
 
 ## License
